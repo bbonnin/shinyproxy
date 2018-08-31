@@ -69,7 +69,7 @@ public class ShinyProxySpecProvider implements IProxySpecProvider {
 		to.setDisplayName(from.getDisplayName());
 		to.setDescription(from.getDescription());
 		to.setLogoURL(from.getLogoURL());
-		
+
 		if (from.getAccessGroups() != null && from.getAccessGroups().length > 0) {
 			ProxyAccessControl acl = new ProxyAccessControl();
 			acl.setGroups(from.getAccessGroups());
@@ -87,7 +87,9 @@ public class ShinyProxySpecProvider implements IProxySpecProvider {
 		cSpec.setVolumes(from.getContainerVolumes());
 		cSpec.setMemory(from.getContainerMemory());
 		cSpec.setPrivileged(from.isContainerPrivileged());
-		
+		cSpec.setProxyManaged(from.isContainerProxyManaged());
+		cSpec.setAppUrl(from.getContainerAppUrl());
+
 		Map<String, Integer> portMapping = new HashMap<>();
 		if (from.getPort() > 0) {
 			portMapping.put("default", from.getPort());
@@ -121,6 +123,9 @@ public class ShinyProxySpecProvider implements IProxySpecProvider {
 		
 		private int port;
 		private String[] accessGroups;
+
+		private boolean containerProxyManaged = true;
+		private String containerAppUrl;
 
 		public String getId() {
 			return id;
@@ -248,6 +253,22 @@ public class ShinyProxySpecProvider implements IProxySpecProvider {
 
 		public void setAccessGroups(String[] accessGroups) {
 			this.accessGroups = accessGroups;
+		}
+
+		public boolean isContainerProxyManaged() {
+			return containerProxyManaged;
+		}
+
+		public void setContainerProxyManaged(boolean containerProxyManaged) {
+			this.containerProxyManaged = containerProxyManaged;
+		}
+
+		public String getContainerAppUrl() {
+			return containerAppUrl;
+		}
+
+		public void setContainerAppUrl(String containerAppUrl) {
+			this.containerAppUrl = containerAppUrl;
 		}
 	}
 }

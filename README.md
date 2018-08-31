@@ -43,3 +43,19 @@ Navigate to http://localhost:8080 to access the application.  If the default con
 
 https://shinyproxy.io
 
+## Docker
+
+* Build the image
+```
+docker build -t shinyproxy .
+```
+
+* Run the image
+```
+docker run  -p 8080:8080 -d --name shinyproxy shinyproxy
+```
+
+> For testing on Mac, maybe it will necessary to start a container for accessing Docker on port 2375
+```
+docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p 127.0.0.1:2375:2375 bobrik/socat TCP-LISTEN:2375,fork UNIX-CONNECT:/var/run/docker.sock
+```

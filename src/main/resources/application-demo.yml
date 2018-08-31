@@ -38,6 +38,12 @@ proxy:
     container-cmd: ["R", "-e", "shinyproxy::run_06_tabsets()"]
     container-image: openanalytics/shinyproxy-demo
     access-groups: scientists
+  - id: non_managed_app
+    display-name: Non managed application
+    description: App In A Non Managed Container
+    access-groups: scientists
+    container-proxy-managed: false
+    container-app-url: https://www.saagie.com
 
 logging:
   file:
