@@ -69,7 +69,7 @@ public class ShinyProxySpecProvider implements IProxySpecProvider {
 		to.setDisplayName(from.getDisplayName());
 		to.setDescription(from.getDescription());
 		to.setLogoURL(from.getLogoURL());
-
+		
 		if (from.getAccessGroups() != null && from.getAccessGroups().length > 0) {
 			ProxyAccessControl acl = new ProxyAccessControl();
 			acl.setGroups(from.getAccessGroups());
@@ -89,7 +89,7 @@ public class ShinyProxySpecProvider implements IProxySpecProvider {
 		cSpec.setPrivileged(from.isContainerPrivileged());
 		cSpec.setProxyManaged(from.isContainerProxyManaged());
 		cSpec.setAppUrl(from.getContainerAppUrl());
-
+		
 		Map<String, Integer> portMapping = new HashMap<>();
 		if (from.getPort() > 0) {
 			portMapping.put("default", from.getPort());
